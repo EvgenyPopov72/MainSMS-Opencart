@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modification>
+        <id>MainSMS Gate</id>
+        <version>0.3</version>
+        <vqmver>2.X</vqmver>
+        <author>EugeneP</author>
+        <file name="catalog/model/checkout/order.php">
+                <operation info="Send SMS to customer, if it need">
+                        <search position="replace">
+						<![CDATA[
+                        'copy'     => $this->config->get('config_sms_copy'),
+                        ]]>
+						</search>
+                        <add>
+						<![CDATA[
+                        'copy'     => str_replace('{PHONE}', $order_info['telephone'], $this->config->get('config_sms_copy')),
+                        ]]></add>
+                </operation>
+        </file>
+</modification>
